@@ -33,7 +33,7 @@ exports.handler = async function (event, context) {
 
       await transporter.sendMail({
         from: process.env.SMTP_EMAIL,
-        to: "yourreceiver@email.com",
+        to: "newzatpage@gmail.com",
         subject: "New form submission (partial)",
         html
       });
